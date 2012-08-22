@@ -1,0 +1,231 @@
+
+
+    .rows{
+    	display: inline;
+    	border-right: solid;
+    	
+    }
+    
+    .overlay{
+    	
+    	
+    	top:0;
+    	left:0;
+    	height: 100%;
+    	width: 100%;
+    	
+    	position: fixed;
+    }
+    
+    .popup{
+    	position:relative;
+    	width:275px;
+    	height: 300px;
+    	-moz-box-shadow:    1px 1px 5px 6px #ccc;
+		-webkit-box-shadow: 1px 1px 5px 6px #ccc;
+		box-shadow:  1px 1px 5px 6px #ccc;
+    	background-size: cover;
+    	margin-left: 40%;
+    	margin-top: 10%;
+    	border-radius: 5px;
+    	background-image: url('http://fierce-plateau-8681.herokuapp.com/bg1.png');;
+    	
+    }
+    
+    .tictactoe{
+    	font-size: 25px;
+    	font-family: "Calibri";
+    	margin-left: 30%;
+    }
+    
+    .joinit{
+    	border-radius: 4px;
+    	width: 150px;
+    	height: 20px;
+    	margin-left: 25px;
+    	float: left;
+    	padding-left: 5px;
+    }
+    
+    .submit{
+    	margin-left: 20px;
+    	height: 27px;
+    	background-color: #49AFCD;
+    	color:white;
+    	border-radius: 4px;
+    	cursor: pointer;
+    	
+    }
+    
+    .upperbar{
+    	top:0;
+    	left:0;
+    	width:100%;
+    	height:8%;
+    	position:fixed;
+    	background-image: url('http://fierce-plateau-8681.herokuapp.com/bg1.png');
+    	-moz-box-shadow:    1px 1px 5px 6px #ccc;
+		-webkit-box-shadow: 1px 1px 5px 6px #ccc;
+		box-shadow:  1px 1px 5px 6px #ccc;
+		z-index: 1000;
+    }
+    
+    .canvasdiiv{
+    	background-color: white;
+    	
+    }
+    
+    .available{
+    	float: right;
+    	height: 100%;
+    	width: 15%;
+    	/*background-image: url('bg.png'); */
+    	background-color:#F2F2F2;
+    	margin-top: 3.9%;
+    	-moz-box-shadow:    3px 6px 5px 6px #ccc;
+		-webkit-box-shadow: 3px 6px 5px 6px #ccc;
+		box-shadow:  3px 6px 5px 6px #ccc;
+    	z-index: 1000;
+    	position: relative;
+    }
+    
+    .player{
+    	
+    	
+    	float: right;
+    	margin-right: 15%;
+    	margin-top: 2%;
+    }
+    
+    .canvasdiv{
+    	width: 100%;
+    	height: 100%;
+    	
+    	position: fixed;
+    }
+    
+    .pname{
+    	
+    	float: left;
+    	font-family: Arial;
+    	font-size: 20px;
+    	font-weight: 700;
+    	margin-top: 1%;
+    	margin-left: 1%;
+    }
+    
+    .online{
+    	padding-left: 15%;
+    	margin-top: 5%;
+    	font-family: Arial;
+    	font-size: 18px;
+    	cursor: pointer;
+     }
+     
+     .online:hover{
+     	-moz-box-shadow:    1px 1px 5px 2px #ccc;
+		-webkit-box-shadow: 1px 1px 5px 2px #ccc;
+		box-shadow:  1px 1px 5px 2px #ccc;
+		background-color: white;
+		zoom: 120%;
+		
+     }
+    
+        .notification{
+	    	width: 300px;
+	    	
+	    	min-height: 50px;
+	    	border-radius: 3px;
+	    	background: #ff6666;
+    		border: 1px solid red;
+    		text-overflow:ellipsis;
+    		
+    		
+	    }
+    
+       .notidata{
+       	  
+       	  position:relative;
+       	 margin-top: 5%;
+       	 margin-bottom: 5%;
+       	 margin-left: 4%;
+       	 
+       	
+       }
+       
+       
+        .classname {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+		background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+		background-color:#ededed;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #dcdcdc;
+		display:inline-block;
+		color:#777777;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:2px 10px;
+		text-decoration:none;
+		text-shadow:1px 1px 0px #ffffff;
+		float: right;
+	}
+	
+	.classname:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+		background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+		background-color:#dfdfdf;
+	}
+	
+	.classname:active {
+		position:relative;
+		top:1px;
+	}
+	
+	.newslist{
+		
+		
+		background-color:#777777;
+		border:1px solid #dcdcdc;
+		
+		color:#ededed;
+		font-family:arial;
+		margin-bottom:0px;
+		position:fixed;
+		
+		bottom: 0;
+	}
+	
+	.merqueclass{
+		background-color:#ededed;
+		border:1px solid #dcdcdc;
+		
+		color:#777777;
+		font-family:arial;
+	}
+	.closenoti{
+		float: right;
+		margin-right: 2%;
+		margin-top: 1%;
+		cursor: pointer;
+	}
+	
+	.score{
+		background-color: red;
+		position: relative;
+		width:200px;
+		height: 50px;
+		float: left;
+		
+	}
+	
+	
+
+

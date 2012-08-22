@@ -1,0 +1,798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>templates</title>
+	<meta name="author" content="ChetanD" />
+	<!-- Date: 2012-08-07 -->
+	
+	<style type="text/css">
+		
+
+    .rows{
+    	display: inline;
+    	border-right: solid;
+    	
+    }
+    
+    .overlay{
+    	
+    	
+    	top:0;
+    	left:0;
+    	height: 100%;
+    	width: 100%;
+    	
+    	position: fixed;
+    }
+    
+    .popup{
+    	position:relative;
+    	width:275px;
+    	height: 300px;
+    	-moz-box-shadow:    1px 1px 5px 6px #ccc;
+		-webkit-box-shadow: 1px 1px 5px 6px #ccc;
+		box-shadow:  1px 1px 5px 6px #ccc;
+    	background-size: cover;
+    	margin-left: 40%;
+    	margin-top: 10%;
+    	border-radius: 5px;
+    	background-image: url('http://fierce-plateau-8681.herokuapp.com/bg1.png');;
+    	
+    }
+    
+    .tictactoe{
+    	font-size: 25px;
+    	font-family: "Calibri";
+    	margin-left: 30%;
+    }
+    
+    .joinit{
+    	border-radius: 4px;
+    	width: 150px;
+    	height: 20px;
+    	margin-left: 25px;
+    	float: left;
+    	padding-left: 5px;
+    }
+    
+    .submit{
+    	margin-left: 20px;
+    	height: 27px;
+    	background-color: #49AFCD;
+    	color:white;
+    	border-radius: 4px;
+    	cursor: pointer;
+    	
+    }
+    
+    .upperbar{
+    	top:0;
+    	left:0;
+    	width:100%;
+    	height:8%;
+    	position:fixed;
+    	background-image: url('http://fierce-plateau-8681.herokuapp.com/bg1.png');
+    	-moz-box-shadow:    1px 1px 5px 6px #ccc;
+		-webkit-box-shadow: 1px 1px 5px 6px #ccc;
+		box-shadow:  1px 1px 5px 6px #ccc;
+		z-index: 1000;
+    }
+    
+    .canvasdiiv{
+    	background-color: white;
+    	
+    }
+    
+    .available{
+    	float: right;
+    	height: 100%;
+    	width: 15%;
+    	/*background-image: url('bg.png'); */
+    	background-color:#F2F2F2;
+    	margin-top: 3.9%;
+    	-moz-box-shadow:    3px 6px 5px 6px #ccc;
+		-webkit-box-shadow: 3px 6px 5px 6px #ccc;
+		box-shadow:  3px 6px 5px 6px #ccc;
+    	z-index: 1000;
+    	position: relative;
+    }
+    
+    .player{
+    	
+    	
+    	float: right;
+    	margin-right: 15%;
+    	margin-top: 2%;
+    }
+    
+    .canvasdiv{
+    	width: 100%;
+    	height: 100%;
+    	
+    	position: fixed;
+    }
+    
+    .pname{
+    	
+    	float: left;
+    	font-family: Arial;
+    	font-size: 20px;
+    	font-weight: 700;
+    	margin-top: 1%;
+    	margin-left: 1%;
+    }
+    
+    .online{
+    	padding-left: 15%;
+    	margin-top: 5%;
+    	font-family: Arial;
+    	font-size: 18px;
+    	cursor: pointer;
+     }
+     
+     .online:hover{
+     	-moz-box-shadow:    1px 1px 5px 2px #ccc;
+		-webkit-box-shadow: 1px 1px 5px 2px #ccc;
+		box-shadow:  1px 1px 5px 2px #ccc;
+		background-color: white;
+		zoom: 120%;
+		
+     }
+    
+        .notification{
+	    	width: 300px;
+	    	
+	    	min-height: 50px;
+	    	border-radius: 3px;
+	    	background: #ff6666;
+    		border: 1px solid red;
+    		text-overflow:ellipsis;
+    		
+    		
+	    }
+    
+       .notidata{
+       	  
+       	  position:relative;
+       	 margin-top: 5%;
+       	 margin-bottom: 5%;
+       	 margin-left: 4%;
+       	 
+       	
+       }
+       
+       
+        .classname {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+		background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+		background-color:#ededed;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #dcdcdc;
+		display:inline-block;
+		color:#777777;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:2px 10px;
+		text-decoration:none;
+		text-shadow:1px 1px 0px #ffffff;
+		float: right;
+	}
+	
+	.classname:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+		background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+		background-color:#dfdfdf;
+	}
+	
+	.classname:active {
+		position:relative;
+		top:1px;
+	}
+	
+	.newslist{
+		
+		
+		background-color:#777777;
+		border:1px solid #dcdcdc;
+		
+		color:#ededed;
+		font-family:arial;
+		margin-bottom:0px;
+		position:fixed;
+		
+		bottom: 0;
+	}
+	
+	.merqueclass{
+		background-color:#ededed;
+		border:1px solid #dcdcdc;
+		
+		color:#777777;
+		font-family:arial;
+	}
+	.closenoti{
+		float: right;
+		margin-right: 2%;
+		margin-top: 1%;
+		cursor: pointer;
+	}
+	
+	.score{
+		background-color: red;
+		position: relative;
+		width:200px;
+		height: 50px;
+		float: left;
+		
+	}
+	
+	
+
+
+
+	</style>
+		<script src="http://fierce-plateau-8681.herokuapp.com/socket.io/socket.io.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+	<script type="text/javascript">
+	
+	var socket=io.connect('http://fierce-plateau-8681.herokuapp.com/');
+	var canvas;
+	var ctx;
+	var tictac=new Array(3);
+	
+	var chance=-1;
+	var username;
+	var oppname="";
+	var moves;
+	
+	
+	socket.on('draw',function(data){
+		chance=1;	
+	    alert(data);
+	});
+	
+	socket.on('update',function(data){
+		
+		
+		var news = document.getElementById("new");
+		news.innerHTML+=data+" | ";
+		
+	});
+	
+	
+	socket.on('recieve',function(data){
+		
+		
+		if(tictac[data.x][data.y]==-1){
+			var x1=data.locationx;
+			var y1=data.locationy;
+			ctx.beginPath();
+		  
+			    ctx.moveTo(x1-50,y1-50);
+			    ctx.lineTo(x1+50,y1+50)
+			    ctx.moveTo(x1+50,y1-50);
+			    ctx.lineTo(x1-50,y1+50); 
+				ctx.closePath();
+				ctx.lineWidth = 5;
+	        	ctx.strokeStyle = "black";
+	        	ctx.stroke();
+	        tictac[data.x][data.y]=1;
+	        chance=0;
+	        
+		}
+	});
+	
+	socket.on('win',function(data,fn){
+		fn("1");
+		var winx1=data.winx1;
+		var winy1=data.winy1;
+		var winx2=data.winx2;
+		var winy2=data.winy2;
+		
+	    ctx.beginPath();
+	    ctx.moveTo(winx1,winy1);
+	    ctx.lineTo(winx2,winy2);
+	    ctx.closePath();
+	    ctx.lineWidth=5;
+	    ctx.stockStyle="red";
+	    ctx.stroke();
+	    chance=1;	
+	    alert(oppname +" won!!!");
+	     
+	    
+	});
+	
+	
+	socket.on('request',function(data,fn){
+		
+		fn("done");
+		
+		/*
+		 * <div>
+		<div class="notification">
+			<img src="dialog_close.png"  style="float: right;margin-right: 2%;margin-top: 1%;cursor: pointer" height="20" width="20"  onclick="remove(this);"/>
+			<div class="notidata">
+				#chetan invite u to play..
+				<a href="#" class="classname">Accept</a>  
+			</div>
+			 
+		</div>
+		<br />
+	</div>
+		 */
+		
+		var wall=document.getElementById("wall");
+		var divtag=document.createElement('div');
+		var divtag1=document.createElement('div');
+		divtag1.className="notification";
+		var imgtag=document.createElement("img");
+		imgtag.setAttribute("src","http://fierce-plateau-8681.herokuapp.com/dialog_close.png");
+		imgtag.className="closenoti";
+		imgtag.setAttribute("height","20");
+		imgtag.setAttribute("width","20");
+		imgtag.setAttribute("onclick","remove(this)");
+		divtag1.appendChild(imgtag);
+		var divtag2=document.createElement("div");
+		divtag2.className="notidata";
+		divtag2.innerText="# "+ data +" invite u to play.."
+		var atag=document.createElement("a");
+		atag.setAttribute("href","#");
+		atag.className="classname";
+		atag.innerText="Accept";
+		atag.id=data;
+		atag.setAttribute("onclick","accept(this)")
+		divtag2.appendChild(atag);
+		divtag1.appendChild(divtag2);
+		divtag.appendChild(divtag1);
+		var brtag=document.createElement("br");
+		divtag.appendChild(brtag);
+		wall.appendChild(divtag);
+		
+	});
+	
+	
+	socket.on('join',function(data,fn){
+		if(data==1){
+	//		alert(data);
+		  	document.getElementById("startup").style.display="none";
+	  		document.getElementById("main").style.display="block";
+	    	 document.getElementById("user").innerHTML="#"+username;	
+		}
+		else{
+			alert("username already taken");
+			document.getElementById("username").value="";
+		}
+		
+		fn("done");
+		setInterval(function(){
+			socket.emit("online",function(data){
+				var data=data.split('`');
+				console.log(data);
+
+			   	var list=document.getElementById("avblist");
+			   	list.innerHTML="";
+			   	//<div class="online">Chetan <img src="tictac.jpg"  height="18" width="20" style="float: right;margin-right: 15%;margin-top: 2%"/></div>
+				//document.getElementById("startup").style.display="none";
+			  //document.getElementById("main").style.display="block";
+			  	
+			   	
+			   	
+			   	 for(var i=0;i<data.length-1;){
+			   	 	
+			   	 if(data[i]!=username){
+			   	         //alert(data[i]); 		
+				   	    var divtag=document.createElement("div");
+				   	    divtag.className="online";
+				   	    var labeltag=document.createElement("label");
+				   	    labeltag.innerHTML=data[i];;
+				   	    //divtag.innerHTML
+				   	    //onclick="demo()"
+				   	    divtag.setAttribute("onclick","request(this)");
+				   	    divtag.appendChild(labeltag);   	    
+				   	    imgtag=document.createElement("img");
+				   	    imgtag.className="player";
+				   	    imgtag.setAttribute("src","http://fierce-plateau-8681.herokuapp.com/tictac.jpg");
+				   	    imgtag.setAttribute("height","18");
+				   	    imgtag.setAttribute("width","20");
+				   	     if(data[i+1]==0){
+				   	     	imgtag.style.display="none";
+				   	     }
+				   	    divtag.appendChild(imgtag);
+				   	    list.appendChild(divtag);
+				   	    console.log(data[i]);
+				   	    
+				   	    
+		            } 	   	
+                        
+		            console.log(data[i]);
+		            i+=2;
+			   	 	
+			   	 } 
+				});
+		    	},5000);
+
+	});
+	
+	socket.on('start',function(data,fn){
+		alert(data+ " is waiting for your move!!");
+		oppname=data;
+		chance=0;
+		fn("start")
+		draw();
+	});
+	
+	
+
+	function remove(that){
+		that=that.parentNode;
+		that=that.parentNode;
+		var par=that.parentNode;
+		
+		par.removeChild(that);
+	}
+	
+	function accept(that){
+		var opp=that.id;
+		socket.emit("accept",opp,function(data){
+			console.log(data);
+			 if(data=="-1"){
+			 	 alert(opp +" is not looged in..")
+			 }
+			 else if(data=="-2"){
+			 	alert(opp +" is playing with other person.. try again..");
+			 }
+			 else{
+			 	alert(opp+ " is ready to play.. he will start game..!!");
+			    chance=1;
+			    oppname=opp;
+		        remove(that);
+		        draw();	    	
+			 }
+		});
+		
+		
+	}
+	
+	
+	
+	
+	
+	function request(that){
+		var labeltag=that.getElementsByTagName("label");
+		var opponante=labeltag[0].innerHTML;
+		
+		if(confirm("Do you want to chanllenge "+opponante+"?")){
+			    socket.emit("request",{challenger:username,opponante:opponante},function(data){
+	              if(data=="-3"){
+	              	//that.style.background = "green";
+	              	//document.getElementsByTagName
+	              	              	
+	              	//var imgtag=that.getElementsByTagName("img");
+	              	//imgtag[0].style.display="block";
+	              	console.log("request has been sent successfuly");
+	              }	    	
+	              
+	              else if(data=="-2"){
+	              	 alert(opponante+" has been busy..try after some time..");
+	              }
+	              else{
+	              	alert(opponante + " is not avialable now..");
+	              }
+		    });
+		}
+		
+	}
+	
+	   
+	$(document).ready(function(){
+			tictac[0]=new Array(3);
+			tictac[1]=new Array(3);
+			tictac[2]=new Array(3);
+			 for(var i=0;i<3;i++){
+			 	tictac[i][0]=-1;
+			 	tictac[i][1]=-1;
+			 	tictac[i][2]=-1;
+			 }
+			
+		    draw();	
+			
+			
+		});
+		
+		
+	function draw(){
+	   		canvas=document.getElementById("canvas");
+			ctx=canvas.getContext("2d");
+			canvas.addEventListener('click',click,false);
+			//ctx.fillRect(100,100,200,200);
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.lineWidth = 5;
+			ctx.beginPath();
+			ctx.moveTo(225,75);
+			ctx.lineTo(225,525);
+			ctx.moveTo(375,75)
+			ctx.lineTo(375,525);
+			ctx.moveTo(75,225)
+			ctx.lineTo(525,225);
+			ctx.moveTo(75,375)
+			ctx.lineTo(525,375);
+			ctx.closePath();
+			
+			ctx.stroke();
+		
+	}	
+	
+	function click(evt)
+	{
+		
+		var x=(evt.clientX-canvas.offsetLeft);
+		var y=evt.clientY-canvas.offsetTop;
+		var x1=-1;
+		var y1=-1;
+		var indexx=-1;
+		var indexy=-1;
+		
+		
+		 if((x>=75 && x<=525) && (y>=75 && y <= 525)){
+		 	if(chance!=1 && oppname.length!=0){
+		 	if(x<=225){
+		 		if(y<=225 && tictac[0][0]==-1){
+		 			tictac[0][0]=0;
+		 			indexx=0;
+		 			indexy=0;
+		 			x1=150;
+		 			y1=150;
+		 		}
+		 		else if( y > 225 && y<=375 && tictac[1][0]==-1){
+		 			tictac[1][0]=0
+		 			indexx=1;
+		 			indexy=0;
+		 			x1=150;
+		 			y1=300;
+		 		}
+		 		else if( y > 375 && tictac[2][0]==-1){
+		 			tictac[2][0]=0
+		 			indexx=2;
+		 			indexy=0;
+		 			x1=150;
+		 			y1=450;
+		 		}
+		 	}
+		 	
+		 	else if(x<=375){
+		 		if(y<=225 && tictac[0][1]==-1){
+		 			tictac[0][1]=0
+		 			indexx=0;
+		 			indexy=1;
+		 			x1=300;
+		 			y1=150;
+		 		}
+		 		else if( y>225 && y<=375 && tictac[1][1]==-1){
+		 			tictac[1][1]=0
+		 			indexx=1;
+		 			indexy=1;
+		 			x1=300;
+		 			y1=300;
+		 		}
+		 		else if( y>375 && tictac[2][1]==-1){
+		 			tictac[2][1]=0
+		 			indexx=2;
+		 			indexy=1;
+		 			x1=300;
+		 			y1=450;
+		 		}
+		 	}
+		 	else{
+		 		if(y<=225 && tictac[0][2]==-1){
+		 			tictac[0][2]=0
+		 			indexx=0;
+		 			indexy=2;
+		 			x1=450;
+		 			y1=150;
+		 		}
+		 		else if(y>225 && y<=375 && tictac[1][2]==-1){
+		 			tictac[1][2]=0
+		 			indexx=1;
+		 			indexy=2;
+		 			x1=450;
+		 			y1=300;
+		
+		 		}
+		 		else if(y>375 && tictac[2][2]==-1){
+		 			tictac[2][2]=0
+		 			indexx=2;
+		 			indexy=2;
+		 			x1=450;
+		 			y1=450;
+		 		}
+		 	}
+		 	
+		 	if(x1!=-1 && y1!=-1){
+			    ctx.beginPath();
+				ctx.arc(x1, y1, 50, 0, Math.PI*2, true);
+			    ctx.lineWidth = 5;
+	        	ctx.strokeStyle = "black";
+	        	ctx.stroke();
+	          	socket.emit('send',{to:oppname,x:indexx,y:indexy,locationx:x1,locationy:y1});
+	          	moves++;
+	          	
+        	}
+        	
+        	iswin();
+        	chance=1;
+        }
+        else if(oppname.length==0){
+        	alert("plz select opponante first!!");
+        }
+        else{
+        	alert("it is not your turn...wait for opponant to play..")
+        }
+	  }
+	}	
+	
+	
+	function iswin(){
+		var winx1=-1;
+		var winx2=-1;
+		var winy1=-1;
+		var winy2=-1;
+		if(tictac[0][0]==0){
+			if(tictac[0][1]==0 && tictac[0][2]==0){
+				winx1=75;
+				winy1=150;
+				winx2=525;
+				winy2=150;
+			}
+			else if(tictac[1][0]==0 && tictac[2][0]==0){
+				winx1=150;
+				winy1=75;
+				winx2=150;
+				winy2=525;
+			}
+			else if(tictac[1][1]==0 && tictac[2][2]==0){
+				winx1=75;
+				winy1=75;
+				winx2=525;
+				winy2=525;
+			}
+		}
+		
+		if(tictac[0][1]==0 && tictac[1][1]==0 && tictac[2][1]==0){
+				winx1=300;
+				winy1=75;
+				winx2=300;
+				winy2=525;
+		}
+		
+		if(tictac[0][2]==0){
+			if(tictac[1][1]==0 && tictac[2][0]==0){
+				winx1=525;
+				winy1=75;
+				winx2=75;
+				winy2=525;
+			}
+			else if(tictac[1][2]==0 && tictac[2][2]==0){
+				winx1=450;
+				winy1=75;
+				winx2=450;
+				winy2=525;
+			}
+		}
+		if(tictac[1][0]==0 && tictac[1][1]==0 && tictac[1][2]==0){
+				winx1=75;
+				winy1=300;
+				winx2=525;
+				winy2=300;
+		}
+		if(tictac[2][0]==0 && tictac[2][1]==0 && tictac[2][2]==0){
+				winx1=75;
+				winy1=450;
+				winx2=525;
+				winy2=450;
+		}
+		
+		if(winx1!=-1){
+			ctx.lineWidth = 5;
+			ctx.beginPath();
+			ctx.moveTo(winx1,winy1);
+			ctx.lineTo(winx2,winy2);
+		
+			ctx.closePath();
+			
+			ctx.stroke();
+			
+			socket.emit('win',{to:oppname,winx1:winx1,winy1:winy1,winx2:winx2,winy2:winy2});
+		}
+		else{
+			if(isdraw()){
+				socket.emit('draw',"draw");
+				alert("Match draw!!!");
+				 
+			}
+		}
+	}
+	
+	function isdraw(){
+	   	
+	   for(var i=0;i<3;i++){
+	   	for (var j=0;j<3;j++){
+	   		if(tictac[i][j]==-1){
+	          return 0;			
+	   		}
+	   	}
+	   }	
+	   
+	   
+	   return 1;
+	}
+	
+	function join(){
+	
+	    moves=0;
+		username=document.getElementById("username").value;
+	    alert(username);
+		 if(username.length!=0){
+		 	socket.emit("join",{name:username});
+		 	
+		 }
+	}
+	</script>
+</head>
+<body style="margin: 0" background="white">
+	
+	<div class="overlay" id="startup" >
+		<div class="popup">
+			<img src="/tictac.jpg" width="150" height="175" style="margin-left: 20%;margin-top: 5%;"/>
+			<br />
+			<label class="tictactoe">Tic-Tac-Toe</label>
+			<br />
+			<br />
+			<input type="text" placeholder="username" class="joinit" id="username"/>
+			<input type="button" value="joined" class="submit" onclick="join()"/>
+		</div>
+	</div>
+	
+  <div id="main" style="display: none">
+  <div class="upperbar">
+  	 <img src="tictac.jpg" height="50" width="60" style="margin-left: 5%;float: left;fon" />
+  	 <label style="" class="pname"> Tic-Tac-Toe <sup>{Beta}</sup></label>
+  	 <label class="pname" style="float: right;margin-right: 5%" id="user"></label>
+  </div>
+  
+  <div class="canvasdiv">
+  	<div class="score" style="margin-top: 4.5%">
+  		<div>
+  			<label>win</label>
+  			<label>0</label>
+  		</div>
+  	</div>
+  	<div class="available" id="avblist">
+  			
+  	</div> 
+  	<div style="float: left">
+	  <canvas width="600" height="600" id="canvas" style="margin-top: 6%;margin-left: 25%;cursor: pointer">chetan	
+	  </canvas>
+	</div> 
+  <div class="notification-wall" style="float: right;margin-top: 5%; margin-right: 2%" id="wall">
+  		
+  </div>
+  </div>
+  <div style="position: fixed;bottom: 0;width: 85%;" ><div class="newslist" style="float: left">News</div><marquee width="100%" id="new" style="float: right" class="merqueclass"></marquee></div>
+  </div>
+  
+  
+</body>
+
+</html>
+
